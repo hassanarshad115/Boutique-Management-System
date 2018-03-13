@@ -18,5 +18,5 @@ namespace EBMS
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new OrderForm());
         }
-    }
+    } 
 }
