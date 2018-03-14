@@ -29,5 +29,11 @@ namespace EBMS
             OderReportForm orf = new OderReportForm();
             orf.ShowDialog();
         }
+
+        private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeShowForm obj = new EmployeeShowForm();
+            obj.ShowDialog();
+        }
     }
 }

@@ -60,6 +60,7 @@ namespace EBMS
             MethodInFirstForm(updateObj, true);
             //bs datagridview ma jst ye 3 lines he likhni  ha..
             dataGridView1.DataSource = GetData();
+            this.Hide();
         }
     }
 }
