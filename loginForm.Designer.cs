@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             this.usernametextBox1 = new System.Windows.Forms.TextBox();
             this.loginbutton1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@
             // loginbutton1
             // 
             this.loginbutton1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginbutton1.Location = new System.Drawing.Point(149, 124);
+            this.loginbutton1.Location = new System.Drawing.Point(149, 133);
             this.loginbutton1.Margin = new System.Windows.Forms.Padding(4);
             this.loginbutton1.Name = "loginbutton1";
             this.loginbutton1.Size = new System.Drawing.Size(53, 35);
@@ -86,7 +87,7 @@
             this.passswordcheckBox1.AutoSize = true;
             this.passswordcheckBox1.BackColor = System.Drawing.Color.Transparent;
             this.passswordcheckBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.passswordcheckBox1.Location = new System.Drawing.Point(149, 100);
+            this.passswordcheckBox1.Location = new System.Drawing.Point(149, 112);
             this.passswordcheckBox1.Name = "passswordcheckBox1";
             this.passswordcheckBox1.Size = new System.Drawing.Size(102, 17);
             this.passswordcheckBox1.TabIndex = 3;
@@ -109,8 +110,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EBMS.Properties.Resources.login;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(357, 251);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(326, 202);
             this.Controls.Add(this.passswordcheckBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -118,9 +119,13 @@
             this.Controls.Add(this.usernametextBox1);
             this.Controls.Add(this.loginbutton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "loginForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace EBMS
 {
-    public partial class SalesForm : Form
+    public partial class BillForm : Form
     {
-        public SalesForm()
+        public BillForm()
         {
             InitializeComponent();
         }
 
-        private void SalesForm_Load(object sender, EventArgs e)
+        private void BillForm_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = GetData();
         }
@@ -28,7 +28,7 @@ namespace EBMS
             DataTable dt = new DataTable();
             string connectionstring = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionstring);
-            SqlDataAdapter adapter = new SqlDataAdapter("spSaleDetail", conn);//ider sales waly table sy likhna ha select * from sales
+            SqlDataAdapter adapter = new SqlDataAdapter("spSaleDetail", conn);
             adapter.Fill(dt);
             return dt;
         }

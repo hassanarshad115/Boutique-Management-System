@@ -60,12 +60,19 @@ namespace EBMS
                 textBox1.Focus();
                 return false;
             }
-          
+            if (clientnametextBox3.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Client Name is Required", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clientnametextBox3.Focus();
+                return false;
+            }
+
             return true;
         }
         double result;
         double price;
         double quanitity;
+        DataSet ds = new DataSet();
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -76,14 +83,64 @@ namespace EBMS
             }
             else
             {
-                price = Convert.ToDouble(dataGridView1.Rows[0].Cells[3].Value);
-                quanitity = Convert.ToDouble(textBox2.Text.Trim());
+                string connectionstring1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+                SqlConnection conn1 = new SqlConnection(connectionstring1);
+                SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName='" + textBox1.Text.Trim() + "'", conn1);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.Fill(ds);
+                int i = ds.Tables[0].Rows.Count;
+                if (i > 0)
+                {
+                    price = Convert.ToDouble(dataGridView1.Rows[0].Cells[3].Value);
+                    quanitity = Convert.ToDouble(textBox2.Text.Trim());
 
 
-                result = quanitity * price;
-                totalPricetextBox4.Text = result.ToString();
+                    result = quanitity * price;
+                    totalPricetextBox4.Text = result.ToString();
+
+                    SaveSaleDetailMethod(); //Dress Detail Save in Database
+                    MessageBox.Show("Save Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CheckRemainingStock(); // delete Dress Name and show new record in checkStockForm
+                }
             }
 
+        }
+
+
+        //checkStockForm k lye ye bnana pra
+        private void CheckRemainingStock()
+        {
+            string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+            SqlConnection conn = new SqlConnection(c);
+            SqlCommand cmd = new SqlCommand("spStock", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@dName", textBox1.Text.Trim());
+
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        private void SaveSaleDetailMethod()
+        {
+            string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+            SqlConnection conn = new SqlConnection(c);
+            SqlCommand cmd = new SqlCommand("spSaleDetail", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@dName", textBox1.Text.Trim());
+            cmd.Parameters.AddWithValue("@cName", clientnametextBox3.Text.Trim());
+            cmd.Parameters.AddWithValue("@quantity", textBox2.Text.Trim());
+            cmd.Parameters.AddWithValue("@price", totalPricetextBox4.Text.Trim());
+
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
@@ -94,6 +151,11 @@ namespace EBMS
                 MessageBox.Show("Only Enter Number", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

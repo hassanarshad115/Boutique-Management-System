@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.availableStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +68,7 @@
             this.availableStockToolStripMenuItem.Name = "availableStockToolStripMenuItem";
             this.availableStockToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.availableStockToolStripMenuItem.Text = "&Available Stock";
+            this.availableStockToolStripMenuItem.Click += new System.EventHandler(this.availableStockToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -92,6 +94,7 @@
             this.saleToolStripMenuItem.Name = "saleToolStripMenuItem";
             this.saleToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.saleToolStripMenuItem.Text = "&Sales";
+            this.saleToolStripMenuItem.Click += new System.EventHandler(this.saleToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -127,6 +130,7 @@
             this.availableStockToolStripMenuItem1.Name = "availableStockToolStripMenuItem1";
             this.availableStockToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
             this.availableStockToolStripMenuItem1.Text = "&Available Stock";
+            this.availableStockToolStripMenuItem1.Click += new System.EventHandler(this.availableStockToolStripMenuItem1_Click);
             // 
             // salesToolStripMenuItem
             // 
@@ -140,6 +144,7 @@
             this.salesDetailToolStripMenuItem.Name = "salesDetailToolStripMenuItem";
             this.salesDetailToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.salesDetailToolStripMenuItem.Text = "&Sales Detail";
+            this.salesDetailToolStripMenuItem.Click += new System.EventHandler(this.salesDetailToolStripMenuItem_Click);
             // 
             // AdminForm
             // 
@@ -149,6 +154,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(968, 499);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -1,6 +1,6 @@
 ﻿namespace EBMS
 {
-    partial class OrderDetailForm
+    partial class StockReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderDetailForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockReportForm));
             this.SuspendLayout();
             // 
-            // OrderDetailForm
+            // StockReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 492);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "OrderDetailForm";
+            this.Name = "StockReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OrderDetailForm";
-            this.Load += new System.EventHandler(this.OrderDetailForm_Load);
+            this.Text = "StockReportForm";
             this.ResumeLayout(false);
 
         }
