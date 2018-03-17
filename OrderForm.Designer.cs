@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,12 +39,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.clientnametextBox3 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rtReceipt = new System.Windows.Forms.RichTextBox();
+            this.printbutton3 = new System.Windows.Forms.Button();
+            this.timerlabel5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.datelabel5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox2
@@ -68,7 +79,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(188, 166);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(188, 170);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 31);
@@ -79,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 171);
+            this.label1.Location = new System.Drawing.Point(12, 175);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 20);
             this.label1.TabIndex = 6;
@@ -147,17 +159,15 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // clientnametextBox3
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Image = global::EBMS.Properties.Resources.order;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(329, 133);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.clientnametextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientnametextBox3.Location = new System.Drawing.Point(174, 22);
+            this.clientnametextBox3.Multiline = true;
+            this.clientnametextBox3.Name = "clientnametextBox3";
+            this.clientnametextBox3.Size = new System.Drawing.Size(150, 31);
+            this.clientnametextBox3.TabIndex = 1;
+            this.clientnametextBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -169,14 +179,98 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Client_Name";
             // 
-            // clientnametextBox3
+            // pictureBox1
             // 
-            this.clientnametextBox3.Location = new System.Drawing.Point(174, 22);
-            this.clientnametextBox3.Multiline = true;
-            this.clientnametextBox3.Name = "clientnametextBox3";
-            this.clientnametextBox3.Size = new System.Drawing.Size(150, 31);
-            this.clientnametextBox3.TabIndex = 1;
-            this.clientnametextBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Image = global::EBMS.Properties.Resources.order;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(329, 133);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 29);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Receipt";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rtReceipt);
+            this.groupBox2.Controls.Add(this.printbutton3);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Location = new System.Drawing.Point(16, 388);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(326, 100);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // rtReceipt
+            // 
+            this.rtReceipt.Location = new System.Drawing.Point(109, 11);
+            this.rtReceipt.Name = "rtReceipt";
+            this.rtReceipt.ReadOnly = true;
+            this.rtReceipt.Size = new System.Drawing.Size(211, 83);
+            this.rtReceipt.TabIndex = 18;
+            this.rtReceipt.Text = "";
+            // 
+            // printbutton3
+            // 
+            this.printbutton3.Enabled = false;
+            this.printbutton3.Location = new System.Drawing.Point(8, 65);
+            this.printbutton3.Name = "printbutton3";
+            this.printbutton3.Size = new System.Drawing.Size(84, 29);
+            this.printbutton3.TabIndex = 17;
+            this.printbutton3.Text = "Print";
+            this.printbutton3.UseVisualStyleBackColor = true;
+            this.printbutton3.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // timerlabel5
+            // 
+            this.timerlabel5.AutoSize = true;
+            this.timerlabel5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.timerlabel5.Location = new System.Drawing.Point(13, 9);
+            this.timerlabel5.Name = "timerlabel5";
+            this.timerlabel5.Size = new System.Drawing.Size(52, 13);
+            this.timerlabel5.TabIndex = 19;
+            this.timerlabel5.Text = "Timelabel";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // datelabel5
+            // 
+            this.datelabel5.AutoSize = true;
+            this.datelabel5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.datelabel5.Location = new System.Drawing.Point(219, 9);
+            this.datelabel5.Name = "datelabel5";
+            this.datelabel5.Size = new System.Drawing.Size(52, 13);
+            this.datelabel5.TabIndex = 19;
+            this.datelabel5.Text = "Datelabel";
             // 
             // OrderForm
             // 
@@ -184,6 +278,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(910, 500);
+            this.Controls.Add(this.datelabel5);
+            this.Controls.Add(this.timerlabel5);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.totalPricetextBox4);
@@ -194,7 +291,6 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderForm";
@@ -203,6 +299,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +318,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox clientnametextBox3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox rtReceipt;
+        private System.Windows.Forms.Button printbutton3;
+        private System.Windows.Forms.Label timerlabel5;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label datelabel5;
     }
 }

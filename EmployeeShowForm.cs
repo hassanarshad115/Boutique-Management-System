@@ -22,7 +22,7 @@ namespace EBMS
         private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MethodInFirstForm(0, false);
-            this.Hide();
+            
         }
 
         private void MethodInFirstForm(int idV, bool isUpdateV)
@@ -38,12 +38,13 @@ namespace EBMS
             int rowindex = dataGridView1.Rows.GetFirstRow(DataGridViewElementStates.Selected);
             int row =(int) dataGridView1.Rows[rowindex].Cells[0].Value;
             MethodInFirstForm(row, true);
-            this.Hide();
+           
         }
 
         private void EmployeeShowForm_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = GetData();
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private DataTable GetData()

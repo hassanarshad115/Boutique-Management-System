@@ -16,7 +16,7 @@ namespace EBMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BillForm());
+            Application.Run(new logoForm());
             //employee waly ko run kr k dekhna ha k ksy nichy taskbar ma thq kam krta ha its best
         }
     } 

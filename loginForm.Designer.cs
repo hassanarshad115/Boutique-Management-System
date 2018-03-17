@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             this.usernametextBox1 = new System.Windows.Forms.TextBox();
             this.loginbutton1 = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.passswordcheckBox1 = new System.Windows.Forms.CheckBox();
             this.passwordtextBox2 = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // usernametextBox1
@@ -45,17 +47,22 @@
             this.usernametextBox1.Name = "usernametextBox1";
             this.usernametextBox1.Size = new System.Drawing.Size(152, 23);
             this.usernametextBox1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.usernametextBox1, "Enter Employee Name");
             // 
             // loginbutton1
             // 
+            this.loginbutton1.BackColor = System.Drawing.Color.Maroon;
+            this.loginbutton1.FlatAppearance.BorderSize = 0;
             this.loginbutton1.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginbutton1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.loginbutton1.Location = new System.Drawing.Point(149, 133);
             this.loginbutton1.Margin = new System.Windows.Forms.Padding(4);
             this.loginbutton1.Name = "loginbutton1";
             this.loginbutton1.Size = new System.Drawing.Size(53, 35);
             this.loginbutton1.TabIndex = 2;
             this.loginbutton1.Text = "Login";
-            this.loginbutton1.UseVisualStyleBackColor = true;
+            this.toolTip1.SetToolTip(this.loginbutton1, "Click for login");
+            this.loginbutton1.UseVisualStyleBackColor = false;
             this.loginbutton1.Click += new System.EventHandler(this.loginbutton1_Click);
             // 
             // label1
@@ -66,9 +73,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(37, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.Size = new System.Drawing.Size(111, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "User Name";
+            this.label1.Text = "Employee Name";
             // 
             // label2
             // 
@@ -92,6 +99,7 @@
             this.passswordcheckBox1.Size = new System.Drawing.Size(102, 17);
             this.passswordcheckBox1.TabIndex = 3;
             this.passswordcheckBox1.Text = "Show Password";
+            this.toolTip1.SetToolTip(this.passswordcheckBox1, "Show Password");
             this.passswordcheckBox1.UseVisualStyleBackColor = false;
             this.passswordcheckBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -104,6 +112,7 @@
             this.passwordtextBox2.PasswordChar = '*';
             this.passwordtextBox2.Size = new System.Drawing.Size(152, 23);
             this.passwordtextBox2.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.passwordtextBox2, "Password");
             // 
             // loginForm
             // 
@@ -138,6 +147,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox passswordcheckBox1;
         private System.Windows.Forms.TextBox passwordtextBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

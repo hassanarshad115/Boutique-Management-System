@@ -26,8 +26,7 @@ namespace EBMS
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OderReportForm orf = new OderReportForm();
-            orf.ShowDialog();
+            
         }
 
         private void employeesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,14 +49,41 @@ namespace EBMS
 
         private void salesDetailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OrderDetailForm obj = new OrderDetailForm();
-            obj.ShowDialog();
+            //OrderDetailForm obj = new OrderDetailForm();
+            //obj.ShowDialog();
         }
 
         private void availableStockToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            StockReportForm obj = new StockReportForm();
+            
+        }
+
+        private void availableStockReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AvailableStockReportForm report = new AvailableStockReportForm();
+            report.ShowDialog();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            SaleReportForm obj = new SaleReportForm();
             obj.ShowDialog();
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            OrderForm obj = new OrderForm();
+            obj.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timelabel1.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("©Boutique Management System(Pvt) Ltd. BahawalNagar,\n Pakistan Since 2018.","AboutUs",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }

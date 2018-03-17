@@ -32,9 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +59,18 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BillForm.cs">
+    <Compile Include="AvailableStockReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AvailableStockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="AvailableStockReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BillForm.Designer.cs">
-      <DependentUpon>BillForm.cs</DependentUpon>
+    <Compile Include="AvailableStockReportForm.Designer.cs">
+      <DependentUpon>AvailableStockReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckStockForm.cs">
       <SubType>Form</SubType>
@@ -82,17 +96,11 @@
     <Compile Include="loginForm.Designer.cs">
       <DependentUpon>loginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OderReportForm.cs">
+    <Compile Include="logoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OderReportForm.Designer.cs">
-      <DependentUpon>OderReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderDetailForm.Designer.cs">
-      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    <Compile Include="logoForm.Designer.cs">
+      <DependentUpon>logoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderForm.cs">
       <SubType>Form</SubType>
@@ -114,6 +122,19 @@
     <Compile Include="PurchaseShowForm.Designer.cs">
       <DependentUpon>PurchaseShowForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="SaleReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleReportForm.Designer.cs">
+      <DependentUpon>SaleReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,17 +147,16 @@
     <Compile Include="SalesManForm.Designer.cs">
       <DependentUpon>SalesManForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StockReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockReportForm.Designer.cs">
-      <DependentUpon>StockReportForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BillForm.resx">
-      <DependentUpon>BillForm.cs</DependentUpon>
+    <EmbeddedResource Include="AvailableStockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AvailableStockReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvailableStockReportForm.resx">
+      <DependentUpon>AvailableStockReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CheckStockForm.resx">
       <DependentUpon>CheckStockForm.cs</DependentUpon>
@@ -150,11 +170,8 @@
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OderReportForm.resx">
-      <DependentUpon>OderReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderDetailForm.resx">
-      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="logoForm.resx">
+      <DependentUpon>logoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
@@ -175,14 +192,19 @@
     <EmbeddedResource Include="PurchaseShowForm.resx">
       <DependentUpon>PurchaseShowForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleReportForm.resx">
+      <DependentUpon>SaleReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesManForm.resx">
       <DependentUpon>SalesManForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockReportForm.resx">
-      <DependentUpon>StockReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -212,6 +234,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\employee.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\availabelstock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\purchase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\sale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\employe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\orderklye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\BOUTIQUE-MANAGEMENT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

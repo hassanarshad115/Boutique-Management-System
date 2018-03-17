@@ -22,15 +22,16 @@ namespace EBMS
         private void CheckStockForm_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = GetData();
+            dataGridView1.Columns[0].Visible = false;
         }
-        DataTable dt = new DataTable();
         private DataTable GetData()
         {
+            DataTable dt = new DataTable();
 
             string connectionstring = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionstring);
             //SqlDataAdapter adapter = new SqlDataAdapter("select * from [PurchaseTbl] where [DressName] like '%" + textBox1.Text.Trim() + "%'", conn);
-            SqlDataAdapter adapter = new SqlDataAdapter("select * from spStock ", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter("select * from PurchaseTbl ", conn);
 
             adapter.Fill(dt);
             return dt;

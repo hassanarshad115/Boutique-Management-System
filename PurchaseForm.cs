@@ -78,17 +78,21 @@ namespace EBMS
             }
             return true;
         }
-        DataTable dt = new DataTable();
+
         DataSet ds = new DataSet();
+        SqlCommand cm;
         private void SaveRecordMethod()
         {
+            //DataTable dt = new DataTable();
+
             string connectionstring = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionstring);
-            SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName='" + dressnametextBox.Text.Trim() + "'", conn);
+            cm = new SqlCommand("select * from PurchaseTbl where DressName='" + dressnametextBox.Text.Trim() + "'", conn);
 
             SqlDataAdapter adpter = new SqlDataAdapter(cm);
             adpter.Fill(ds);
             int name = ds.Tables[0].Rows.Count;
+
             if (name > 0)
             {
                 MessageBox.Show("Item Name " + dressnametextBox.Text + " is Already Exist", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -108,9 +112,10 @@ namespace EBMS
                 cmd.Parameters.AddWithValue("@desc", descriptionrichTextBox.Text.Trim());
                 cmd.Parameters.AddWithValue("@purchaseD", datepurchasedatetime.Value.Date);
 
-                conn.Open();
+                conn1.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
+                conn1.Close();
+
                 MessageBox.Show("Save Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -121,7 +126,7 @@ namespace EBMS
             SqlCommand cmd = new SqlCommand("spUp", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@DName", dressizetextBox.Text.Trim());
+            cmd.Parameters.AddWithValue("@DName", dressnametextBox.Text.Trim());
             cmd.Parameters.AddWithValue("@DSize", dressizetextBox.Text.Trim());
             cmd.Parameters.AddWithValue("@ppi", pricePerItemtextBox.Text.Trim());
             cmd.Parameters.AddWithValue("@q", QuantitytextBox.Text.Trim());
@@ -180,7 +185,7 @@ namespace EBMS
             SqlConnection conn1 = new SqlConnection(connectionstring1);
             SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName='" + dressnametextBox.Text.Trim() + "'", conn1);
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            SqlDataAdapter adapter = new SqlDataAdapter(cm);
             adapter.Fill(ds);
             int i = ds.Tables[0].Rows.Count;
             if (i > 0)
@@ -201,6 +206,9 @@ namespace EBMS
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Delete Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                PurchaseShowForm p = new PurchaseShowForm();
+                p.Show();
             }
             else
             {

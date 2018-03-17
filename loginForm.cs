@@ -27,7 +27,9 @@ namespace EBMS
                 getLoginMethod(out isUsername, out isPassword);
                 if (isUsername && isPassword)
                 {
-                    MessageBox.Show("Successfully ");
+                    this.Hide();
+                    AdminForm af = new AdminForm();
+                    af.Show();
                 }
                 else if (!isUsername)
                 {
@@ -38,7 +40,7 @@ namespace EBMS
                 }
                 else
                 {
-                    MessageBox.Show("UserName is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Password is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     passwordtextBox2.Clear();
                     passwordtextBox2.Focus();
                 }

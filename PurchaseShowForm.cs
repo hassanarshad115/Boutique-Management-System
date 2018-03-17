@@ -22,6 +22,7 @@ namespace EBMS
         private void PurchaseShowForm_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = GetData();
+            dataGridView1.Columns[0].Visible = false;
         }
 
        
@@ -39,7 +40,7 @@ namespace EBMS
         {
 
             MethodInFirstForm(0, false);
-            this.Hide();
+            //this.Hide();
         }
 
         private void MethodInFirstForm(int idV, bool updateV)
@@ -60,7 +61,7 @@ namespace EBMS
             MethodInFirstForm(updateObj, true);
             //bs datagridview ma jst ye 3 lines he likhni  ha..
             dataGridView1.DataSource = GetData();
-            this.Hide();
+            //this.Hide();
         }
     }
 }

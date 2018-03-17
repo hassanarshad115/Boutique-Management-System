@@ -23,6 +23,7 @@ namespace EBMS
         {
             dataGridView1.DataSource = GetData();
             dataGridView1.Columns[0].Visible = false;
+            timer1.Start();
         }
         DataTable dt = new DataTable();
         private DataTable GetData()
@@ -85,9 +86,9 @@ namespace EBMS
             {
                 string connectionstring1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
                 SqlConnection conn1 = new SqlConnection(connectionstring1);
-                SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName='" + textBox1.Text.Trim() + "'", conn1);
+                SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName = '" + textBox1.Text.Trim() + "'", conn1);
 
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter(cm);
                 adapter.Fill(ds);
                 int i = ds.Tables[0].Rows.Count;
                 if (i > 0)
@@ -156,6 +157,49 @@ namespace EBMS
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+         
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //print document k ander ye likhna ha
+            e.Graphics.DrawString(rtReceipt.Text, new Font("Arial", 14, FontStyle.Regular), Brushes.Black, 120, 120);
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            //jb receipt k button p click kry tw ye code run ho \
+            
+            rtReceipt.Clear();
+            rtReceipt.AppendText(Environment.NewLine); //phli line chor k
+            rtReceipt.AppendText("\t" + "Boutique Management System" + Environment.NewLine); //title
+
+            rtReceipt.AppendText("-----------------------------------------------------------" + Environment.NewLine); //fr line
+            rtReceipt.AppendText(timerlabel5.Text + "\t" + datelabel5.Text + Environment.NewLine);
+            rtReceipt.AppendText("-----------------------------------------------------------" + Environment.NewLine); //fr line
+                                                                                                                       //fr jo txtbox ki value receipt ma show krni ho us us ko asy likhna ha jsy nichy likha hoa h
+            rtReceipt.AppendText("Client Name      \t\t\t" + clientnametextBox3.Text + Environment.NewLine);
+            rtReceipt.AppendText("Dress Name     \t\t\t" + textBox1.Text + Environment.NewLine);
+            rtReceipt.AppendText("Quanity      \t\t\t" + textBox2.Text + Environment.NewLine);
+            rtReceipt.AppendText("Total Price      \t\t\t" + totalPricetextBox4.Text + Environment.NewLine);
+
+            rtReceipt.AppendText("-----------------------------------------------------------" + Environment.NewLine);
+
+            rtReceipt.AppendText("©Boutique Management System(Pvt) Ltd. BahawalNagar,\n Pakistan Since 2018. " + Environment.NewLine);
+
+            printbutton3.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timerlabel5.Text = DateTime.Now.ToLongTimeString();
+            datelabel5.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

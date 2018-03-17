@@ -99,6 +99,7 @@ namespace EBMS
             }
             return true;
         }
+
             private void SaveMethod()
         {
             string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
@@ -161,6 +162,9 @@ namespace EBMS
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Delete Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                EmployeeShowForm obj = new EmployeeShowForm();
+                obj.Show();
             }
             else
             {
