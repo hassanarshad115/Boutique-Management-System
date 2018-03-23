@@ -133,8 +133,8 @@ namespace EBMS
             SqlCommand cmd = new SqlCommand("spSaleDetail", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@dName", textBox1.Text.Trim());
             cmd.Parameters.AddWithValue("@cName", clientnametextBox3.Text.Trim());
+            cmd.Parameters.AddWithValue("@dName", textBox1.Text.Trim());
             cmd.Parameters.AddWithValue("@quantity", textBox2.Text.Trim());
             cmd.Parameters.AddWithValue("@price", totalPricetextBox4.Text.Trim());
 
@@ -200,6 +200,17 @@ namespace EBMS
         {
             timerlabel5.Text = DateTime.Now.ToLongTimeString();
             datelabel5.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            clientnametextBox3.Clear();
+            totalPricetextBox4.Clear();
+            rtReceipt.Clear();
+            printbutton3.Enabled = false;
+            textBox1.Focus();
         }
     }
 }

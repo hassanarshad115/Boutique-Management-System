@@ -37,8 +37,9 @@ namespace EBMS
 
         private void saleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SalesForm obj = new SalesForm();
-            obj.ShowDialog(); //iski abi krni ha coding
+            
+            OrderForm obj = new OrderForm();
+            obj.ShowDialog();
         }
 
         private void availableStockToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,8 +73,8 @@ namespace EBMS
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            OrderForm obj = new OrderForm();
-            obj.ShowDialog();
+            SalesForm obj = new SalesForm();
+            obj.ShowDialog(); //iski abi krni ha coding
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -84,6 +85,13 @@ namespace EBMS
         private void aboutUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("©Boutique Management System(Pvt) Ltd. BahawalNagar,\n Pakistan Since 2018.","AboutUs",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginForm lf = new loginForm();
+            lf.Show();
         }
     }
 }

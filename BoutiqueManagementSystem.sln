@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBMS", "EBMS.csproj", "{6D5B2ECC-A3DA-447B-A58D-1A48195961EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoutiqueManagementSystem", "BoutiqueManagementSystem.csproj", "{6D5B2ECC-A3DA-447B-A58D-1A48195961EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -51,6 +51,7 @@
             this.timerlabel5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.datelabel5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -129,7 +130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 357);
+            this.label4.Location = new System.Drawing.Point(20, 349);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 20);
             this.label4.TabIndex = 13;
@@ -225,7 +226,7 @@
             this.groupBox2.Size = new System.Drawing.Size(326, 100);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Print Report";
             // 
             // rtReceipt
             // 
@@ -272,6 +273,17 @@
             this.datelabel5.TabIndex = 19;
             this.datelabel5.Text = "Datelabel";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(278, 304);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(60, 32);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Reset";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +296,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.totalPricetextBox4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
@@ -327,5 +340,6 @@
         private System.Windows.Forms.Label timerlabel5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label datelabel5;
+        private System.Windows.Forms.Button button3;
     }
 }

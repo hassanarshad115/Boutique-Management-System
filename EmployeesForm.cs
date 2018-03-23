@@ -26,6 +26,7 @@ namespace EBMS
             {
                 DataTable dt = GetRecordById(eIdP);
                 DataRow row = dt.Rows[0];
+                //ye 2 lines lazmi yad rkhna load event ma txtbox ma value k lye
 
                 nametext.Text = row["EmpName"].ToString();
                 designationComboBox1.Text = row["EmpDesignation"].ToString();
@@ -39,10 +40,12 @@ namespace EBMS
         private DataTable GetRecordById(int eIdP)
         {
             DataTable dt = new DataTable();
+
             string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
             SqlConnection conn = new SqlConnection(c);
             SqlCommand cmd = new SqlCommand("spEAccessById", conn);
             cmd.CommandType = CommandType.StoredProcedure;
+
             cmd.Parameters.AddWithValue("@id", eIdP);
 
             conn.Open();
@@ -99,44 +102,75 @@ namespace EBMS
             }
             return true;
         }
+        DataSet ds = new DataSet();
 
-            private void SaveMethod()
+
+        private void SaveMethod()
         {
-            string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
-            SqlConnection conn = new SqlConnection(c);
-            SqlCommand cmd = new SqlCommand("spEI", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            string c1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+            SqlConnection conn1 = new SqlConnection(c1);
+            SqlCommand cm = new SqlCommand("select * from [EmployeeTbl] where [EmpName]='" + nametext.Text.Trim() + "'", conn1);
 
-            cmd.Parameters.AddWithValue("@n", nametext.Text.Trim());
-            cmd.Parameters.AddWithValue("@designation", designationComboBox1.Text);
-            cmd.Parameters.AddWithValue("@epwd", passwordtextbox.Text.Trim());
-            cmd.Parameters.AddWithValue("@edate", joiningdate.Value.Date);
+            SqlDataAdapter adapter = new SqlDataAdapter(cm);
+            adapter.Fill(ds);
+            int i = ds.Tables[0].Rows.Count;
+            if (i > 0)
+            {
+                string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+                SqlConnection conn = new SqlConnection(c);
+                SqlCommand cmd = new SqlCommand("spEI", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Save Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Parameters.AddWithValue("@n", nametext.Text.Trim());
+                cmd.Parameters.AddWithValue("@designation", designationComboBox1.Text);
+                cmd.Parameters.AddWithValue("@epwd", passwordtextbox.Text.Trim());
+                cmd.Parameters.AddWithValue("@edate", joiningdate.Value.Date);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Save Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Employee Name " + nametext.Text + " is Not Exist", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void UpdateMethod()
         {
-            string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
-            SqlConnection conn = new SqlConnection(c);
-            SqlCommand cmd = new SqlCommand("spEup", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            string c1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+            SqlConnection conn1 = new SqlConnection(c1);
+            SqlCommand cm = new SqlCommand("select * from [EmployeeTbl] where [EmpName]='" + nametext.Text.Trim() + "'", conn1);
 
-            cmd.Parameters.AddWithValue("@n", nametext.Text.Trim());
-            cmd.Parameters.AddWithValue("@designation", designationComboBox1.Text);
-            cmd.Parameters.AddWithValue("@epwd", passwordtextbox.Text.Trim());
-            cmd.Parameters.AddWithValue("@edate", joiningdate.Value.Date);
+            SqlDataAdapter adapter = new SqlDataAdapter(cm);
+            adapter.Fill(ds);
+            int i = ds.Tables[0].Rows.Count;
+            if (i > 0)
+            {
+                string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+                SqlConnection conn = new SqlConnection(c);
+                SqlCommand cmd = new SqlCommand("spEup", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Update Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Parameters.AddWithValue("@n", nametext.Text.Trim());
+                cmd.Parameters.AddWithValue("@designation", designationComboBox1.Text);
+                cmd.Parameters.AddWithValue("@epwd", passwordtextbox.Text.Trim());
+                cmd.Parameters.AddWithValue("@edate", joiningdate.Value.Date);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Update Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Employee Name " + nametext.Text + " is Not Exist", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
-        DataSet ds = new DataSet();
         private void button3_Click(object sender, EventArgs e)
         {
             string c1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
@@ -146,7 +180,7 @@ namespace EBMS
             SqlDataAdapter adapter = new SqlDataAdapter(cm);
             adapter.Fill(ds);
             int i = ds.Tables[0].Rows.Count;
-            if(i > 0)
+            if (i > 0)
             {
                 string c = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
                 SqlConnection conn = new SqlConnection(c);

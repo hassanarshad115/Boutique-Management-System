@@ -121,22 +121,37 @@ namespace EBMS
         }
         private void updateRecordMethod()
         {
-            string connectionstring = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connectionstring);
-            SqlCommand cmd = new SqlCommand("spUp", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            string connectionstring1 = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+            SqlConnection conn1 = new SqlConnection(connectionstring1);
+            SqlCommand cm = new SqlCommand("select * from PurchaseTbl where DressName='" + dressnametextBox.Text.Trim() + "'", conn1);
 
-            cmd.Parameters.AddWithValue("@DName", dressnametextBox.Text.Trim());
-            cmd.Parameters.AddWithValue("@DSize", dressizetextBox.Text.Trim());
-            cmd.Parameters.AddWithValue("@ppi", pricePerItemtextBox.Text.Trim());
-            cmd.Parameters.AddWithValue("@q", QuantitytextBox.Text.Trim());
-            cmd.Parameters.AddWithValue("@desc", descriptionrichTextBox.Text.Trim());
-            cmd.Parameters.AddWithValue("@purchaseD", datepurchasedatetime.Value.Date);
+            SqlDataAdapter adapter = new SqlDataAdapter(cm);
+            adapter.Fill(ds);
+            int i = ds.Tables[0].Rows.Count;
+            if (i > 0)
+            {
+                string connectionstring = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connectionstring);
+                SqlCommand cmd = new SqlCommand("spUp", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Update Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Parameters.AddWithValue("@DName", dressnametextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@DSize", dressizetextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@ppi", pricePerItemtextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@q", QuantitytextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@desc", descriptionrichTextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@purchaseD", datepurchasedatetime.Value.Date);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Update Record Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Employee Name " + dressnametextBox.Text + " is Not Exist", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void PurchaseForm_Load(object sender, EventArgs e)

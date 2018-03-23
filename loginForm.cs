@@ -31,16 +31,16 @@ namespace EBMS
                     AdminForm af = new AdminForm();
                     af.Show();
                 }
-                else if (!isUsername)
+                else if(!isUsername)
                 {
-                    MessageBox.Show("UserName is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("UserName\t" + usernametextBox1.Text + " is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usernametextBox1.Clear();
                     passwordtextBox2.Clear();
                     usernametextBox1.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Password is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Password\t" + passwordtextBox2.Text + " is Not Correct", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     passwordtextBox2.Clear();
                     passwordtextBox2.Focus();
                 }
@@ -51,7 +51,7 @@ namespace EBMS
         {
             if (usernametextBox1.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("UserName is Required","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("UserName is Required", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 usernametextBox1.Focus();
                 return false;
             }
@@ -66,10 +66,10 @@ namespace EBMS
 
         private void getLoginMethod(out bool isUsername, out bool isPassword)
         {
-            
+
             string connectionString = ConfigurationManager.ConnectionStrings["edb"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spl",conn);
+            SqlCommand cmd = new SqlCommand("spl", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@isu", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -80,7 +80,7 @@ namespace EBMS
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
-            isUsername =(bool) cmd.Parameters["@isu"].Value;
+            isUsername = (bool)cmd.Parameters["@isu"].Value;
             isPassword = (bool)cmd.Parameters["@isp"].Value;
         }
 
@@ -91,13 +91,13 @@ namespace EBMS
 
         private void ShowAndNotShowPasswordMethod()
         {
-            if (passswordcheckBox1.Checked )
+            if (passswordcheckBox1.Checked)
             {
                 passwordtextBox2.PasswordChar = default(char);
             }
             if (!passswordcheckBox1.Checked)
             {
-                passwordtextBox2.PasswordChar =Convert.ToChar("*");
+                passwordtextBox2.PasswordChar = Convert.ToChar("*");
             }
         }
     }

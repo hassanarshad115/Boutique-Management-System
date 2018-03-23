@@ -33,5 +33,24 @@ namespace EBMS
             adapter.Fill(dt);
             return dt;
         }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            SaleUpdateAndDeleteForm obj = new SaleUpdateAndDeleteForm();
+
+            int rowindex = dataGridView1.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+
+            string r1 = Convert.ToString(dataGridView1.Rows[rowindex].Cells["DressName"].Value);//convert krny ka treeka b dekh ly
+            string r2 = Convert.ToString(dataGridView1.Rows[rowindex].Cells["Price"].Value);//convert krny ka treeka b dekh ly
+            string r3 = Convert.ToString(dataGridView1.Rows[rowindex].Cells["Quantity"].Value);//convert krny ka treeka b dekh ly
+
+
+            obj.DnameP = r1;
+            obj.DpriceP = r2;
+            obj.DquantityP = r3;
+
+            obj.Show();
+
+        }
     }
 }
